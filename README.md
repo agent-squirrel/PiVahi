@@ -107,6 +107,13 @@ If shell access is needed but not remotely, the SSH service is enabled by defaul
 - Easily switch to read-write mode for quick changes 
 - Based on well tested software such as Avahi mDNSResponder and Shairport Airplay Service
 
+# Things Still ToDo
+
+- [x] Create easy install steps
+- [] Fully comment code
+- [] Build Pi image with access point service
+- [] Build Pi image without access point services
+
 
 
 ## Built With
