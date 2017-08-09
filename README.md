@@ -95,7 +95,7 @@ By default the DHCP client service is disabled on PiVahi as this speeds up the b
   6. Set the filesystem back to read-only with `ro`
   7. `exit` 
 
-If shell access is needed but not remotely, the SSH service is enabled by default and can be accessed over the PiVahi wireless network at IP: `172.16.0.1`.
+If shell access is needed but not remotely, the SSH service is enabled by default and can be accessed over the PiVahi wireless network at IP: `172.16.1.1`.
 
 
 # Features
