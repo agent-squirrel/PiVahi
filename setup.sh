@@ -264,10 +264,11 @@ EOT
   echo 'Configuring DHCP Server.'
   mv /etc/dnsmasq.conf /etc/dnsmasq.conf
   echo "" > /etc/dnsmasq.conf
-  cat <<EOT >> /etc/hostapd/hostapd.conf
+  cat <<EOT >> /etc/dnsmasq.conf
   interface=$wifihw
   listen-address=172.16.1.1
   bind-interfaces
+  domain-needed
   server=127.0.0.1
   bogus-priv
   dhcp-range=172.16.1.50,172.16.1.150,12h
