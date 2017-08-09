@@ -109,9 +109,7 @@ __________.______   ____      .__    .__
                             \/     \/
 
 PiVahi uses a read-only filesystem.
-To make changes use the command 'rw'
-'ro' will set the filesystem back to
-read-only.
+To make changes use the command 'rw', 'ro' will set the filesystem back to read-only.
 
 EOT
 echo
@@ -393,7 +391,9 @@ echo
 echo '------------------------------------------'
 if [[ $wifihw != "" ]]; then
   echo 'Network Name: PiVahi'
+  echo
   echo 'Network Pass: p1vah1pass'
+  echo
 fi
 echo 'Airplay Name: PiVahi'
 echo
