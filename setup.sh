@@ -262,7 +262,7 @@ EOT
   sed -i.bak 's-^#DAEMON_CONF .*$-DAEMON_CONF="/etc/hostapd/hostapd.conf"-' /etc/default/hostapd
   echo
   echo 'Configuring DHCP Server.'
-  mv /etc/dnsmasq.conf /etc/dnsmasq.conf
+  mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
   echo "" > /etc/dnsmasq.conf
   cat <<EOT >> /etc/dnsmasq.conf
   interface=$wifihw
