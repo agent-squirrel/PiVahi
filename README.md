@@ -110,9 +110,9 @@ If shell access is needed but not remotely, the SSH service is enabled by defaul
 # Things Still ToDo
 
 - [x] Create easy install steps
-- [] Fully comment code
-- [] Build Pi image with access point service
-- [] Build Pi image without access point services
+- [ ] Fully comment code
+- [ ] Build Pi image with access point service
+- [ ] Build Pi image without access point services
 
 
 
