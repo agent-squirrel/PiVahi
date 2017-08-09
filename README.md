@@ -24,7 +24,7 @@ On a Raspberry Pi 3 PiVahi averages a 9 second cold boot time.
 
 ## Prerequisites
 
-- A Raspberry Pi 2/3
+- A [Raspberry Pi](http://au.element14.com/buy-raspberry-pi?ICID=I-HPBL-april16-NP-08) 2/3
 - A Pi compatible wireless adapter such as [this](http://au.element14.com/element14/wipi/dongle-wifi-usb-for-raspberry/dp/2133900) (If using Pi 2)
 - An Ethernet cable for setup (Also for the Pi 2 if not using WiFi)
 - A 2Amp (Minimum) micro USB charger
