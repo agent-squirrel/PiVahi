@@ -114,6 +114,7 @@ If shell access is needed but not remotely, the SSH service is enabled by defaul
 - [ ] Build Pi image with access point service
 - [ ] Build Pi image without access point services
 - [ ] Design and implement local configuration web page
+- [ ] Add verbose logging to file
 
 
 
