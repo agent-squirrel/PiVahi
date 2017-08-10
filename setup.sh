@@ -96,6 +96,7 @@ echo
 echo 'Setting system hostname.'
 echo 'pivahi' > /etc/hostname
 sed -i.bak 's/raspberrypi/pivahi/' /etc/hosts
+echo '172.168.1.1      pivahi' >> /etc/hosts
 echo
 echo 'Configuring MOTD.'
 rm -f /etc/motd
@@ -273,6 +274,7 @@ EOT
   bogus-priv
   dhcp-range=172.16.1.50,172.16.1.150,12h
   dhcp-option=3
+  dhcp-option=6,172.16.1.1
 EOT
   sed -i.bak 's/#net.ipv4.ip_forward/net.ipv4.ip_forward/g' /etc/sysctl.conf
   sysctl -p /etc/sysctl.conf
@@ -360,8 +362,8 @@ set_bash_prompt(){
     PS1='\[\033[01;32m\]\u@\h${fs_mode:+($fs_mode)}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 }
 
-alias ro='sudo mount -o remount,ro / ; sudo mount -o remount,ro /boot ; "Now in Read-Only Mode"'
-alias rw='sudo mount -o remount,rw / ; sudo mount -o remount,rw /boot ; "Caution! Now in Read-Write Mode!"'
+alias ro='sudo mount -o remount,ro / ; sudo mount -o remount,ro /boot ; echo "Now in Read-Only Mode"'
+alias rw='sudo mount -o remount,rw / ; sudo mount -o remount,rw /boot ; echo "Caution! Now in Read-Write Mode!"'
 
 # setup fancy prompt
 PROMPT_COMMAND=set_bash_prompt
