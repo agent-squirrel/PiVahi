@@ -55,7 +55,7 @@ Your Raspberry Pi will need an internet connection for the duration of the insta
     4. Change to the directory of your downloaded Raspbian image (below assumes it's in Downloads)
         `cd ~/Downloads`
     5. Write the image to the SD card
-        `dd if=(raspbian image name.img) of=/dev/(device node number)`
+        `dd if=(raspbian_image_name.img) of=/dev/(device_node_number)`
 2. Boot the Raspberry Pi with the new SD card inserted
 3. Login with user `pi` and password `raspberry`
 
