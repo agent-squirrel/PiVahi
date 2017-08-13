@@ -134,3 +134,4 @@ If shell access is needed but not remotely, the SSH service is enabled by defaul
 * [Charles' Blog](https://hallard.me/raspberry-pi-read-only/)
 * [Frillip](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
 * [k3a](http://k3a.me/how-to-make-raspberrypi-truly-read-only-reliable-and-trouble-free/)
+* [SpinKit](https://github.com/tobiasahlin/SpinKit) - The WebUI makes use of SpinKit
