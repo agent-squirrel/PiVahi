@@ -79,9 +79,11 @@ rm -f /etc/systemd/system/dhcpcd.service.d/wait.conf
 mkdir /etc/sounds
 wget -q https://theway.duckdns.org/repo/pivahi/beep.mp3 -P /etc/sounds/
 sed -i.bak '0,/^exit.*/s-^exit.*-mpg123 /etc/sounds/beep.mp3\n&-' /etc/rc.local
-sed -i.bak 's/^BLANK_TIME=.*/BLANK_TIME=0/' /etc/kbd/config
-sed -i.bak 's/^POWERDOWN_TIME=.*/POWERDOWN_TIME=0/' /etc/kbd/config
-systemctl restart kbd
+if [ -e "/etc/kbd/config" ]; then
+  sed -i.bak 's/^BLANK_TIME=.*/BLANK_TIME=0/' /etc/kbd/config
+  sed -i.bak 's/^POWERDOWN_TIME=.*/POWERDOWN_TIME=0/' /etc/kbd/config
+  systemctl restart kbd
+fi
 echo
 echo 'Enabling SSH.'
 { systemctl start ssh; systemctl enable ssh; } > /dev/null 2>&1 &
@@ -230,37 +232,37 @@ EOT
   echo
   echo 'Configuring hostapd.'
   cat <<EOT >> /etc/hostapd/hostapd.conf
-  # Interface Name
-  interface=$wifihw
-  # Use the nl80211 driver with the brcmfmac driver
-  driver=nl80211
-  # Network Name
-  ssid=PiVahi
-  # Use the 2.4GHz band
-  hw_mode=g
-  # Use channel 6
-  channel=6
-  # Enable 802.11n
-  ieee80211n=1
-  # Enable WMM
-  wmm_enabled=1
-  # Enable 40MHz channels with 20ns guard interval
-  ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
-  # Accept all MAC addresses
-  macaddr_acl=0
-  # Use WPA authentication
-  auth_algs=1
-  ignore_broadcast_ssid=0
-  # Use WPA2
-  wpa=2
-  # Use a pre-shared key
-  wpa_key_mgmt=WPA-PSK
-  # The network passphrase
-  wpa_passphrase=p1vah1pass
-  # Use AES, instead of TKIP
-  rsn_pairwise=CCMP
+# Interface Name
+interface=$wifihw
+# Use the nl80211 driver with the brcmfmac driver
+driver=nl80211
+# Network Name
+ssid=PiVahi
+# Use the 2.4GHz band
+hw_mode=g
+# Use channel 6
+channel=6
+# Enable 802.11n
+ieee80211n=1
+# Enable WMM
+wmm_enabled=1
+# Enable 40MHz channels with 20ns guard interval
+ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
+# Accept all MAC addresses
+macaddr_acl=0
+# Use WPA authentication
+auth_algs=1
+ignore_broadcast_ssid=0
+# Use WPA2
+wpa=2
+# Use a pre-shared key
+wpa_key_mgmt=WPA-PSK
+# The network passphrase
+wpa_passphrase=p1vah1pass
+# Use AES, instead of TKIP
+rsn_pairwise=CCMP
 EOT
-  sed -i.bak 's-^#DAEMON_CONF .*$-DAEMON_CONF="/etc/hostapd/hostapd.conf"-' /etc/default/hostapd
+  sed -i.bak 's-#DAEMON_CONF=""-DAEMON_CONF="/etc/hostapd/hostapd.conf"-' /etc/default/hostapd
   echo
   echo 'Configuring DHCP Server.'
   mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
@@ -307,9 +309,10 @@ sed -i.bak '1s/$/ fastboot noswap ro consoleblank=0/' /boot/cmdline.txt
 echo
 echo
 echo 'Moving dhcp, run, spool, and lock to a temporary filesystem.'
-rm -rf /var/lib/dhcp/ /var/run /var/spool /var/lock /etc/resolv.conf
+rm -rf /var/lib/dhcp/ /var/run /var/spool /var/lock /etc/resolv.conf /var/lib/misc
 ln -s /tmp /var/lib/dhcp
 ln -s /tmp /var/run
+ln -s /tmp /var/lib/misc
 ln -s /tmp /var/spool
 ln -s /tmp /var/lock
 touch /tmp/dhcpcd.resolv.conf; ln -s /tmp/dhcpcd.resolv.conf /etc/resolv.conf
