@@ -90,10 +90,9 @@ By default the DHCP client service is disabled on PiVahi as this speeds up the b
   1. Attach a display and keyboard to the Pi
   2. Login as normal
   3. Put PiVahi into read-write mode with `rw`
-  4. Enable the dhcpcd service with `sudo systemctl start dhcpcd`
-  5. To auto start the service on boot issue the command `sudo systemctl enable dhcpcd`
-  6. Set the filesystem back to read-only with `ro`
-  7. `exit` 
+  4. Manually call the DHCP client with `sudo dhclient (ethernet interface number)`
+  5. Set the filesystem back to read-only with `ro`
+  6. `exit` 
 
 If shell access is needed but not remotely, the SSH service is enabled by default and can be accessed over the PiVahi wireless network at IP: `172.16.1.1`.
 
